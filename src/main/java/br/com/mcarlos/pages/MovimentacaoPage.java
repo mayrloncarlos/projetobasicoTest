@@ -6,47 +6,47 @@ import br.com.mcarlos.core.BasePage;
 
 public class MovimentacaoPage extends BasePage {	
 
-	public void selecionarTipoMovimentacao(String movimentacao) {
+	public void setTipoMovimentacao(String movimentacao) {
 		selecionarCombo("tipo", movimentacao);
 	}
 	
-	public void inserirDataMovimentacao(String data) {
+	public void setDataMovimentacao(String data) {
 		escreve("data_transacao", data);
 	}
 	
-	public void inserirDataPagamento(String data) {
+	public void setDataPagamento(String data) {
 		escreve("data_pagamento", data);
 	}
 	
-	public void inserirDescricao(String descricao) {
+	public void setDescricao(String descricao) {
 		escreve("descricao", descricao);
 	}
 	
-	public void inserirInteressado(String interessado) {
+	public void setInteressado(String interessado) {
 		escreve("interessado", interessado);
 	}
 	
-	public void inserirValor(String valor) {
+	public void setValor(String valor) {
 		escreve("valor", valor);
 	}
 	
-	public void selecionarConta(String conta) {
+	public void setConta(String conta) {
 		selecionarCombo("conta", conta);
 	}
 	
-	public void selecionarSituacaoPendente() {
+	public void setSituacaoPendente() {
 		clicar("status_pendente");
 	}
 	
-	public void selecionarSituacaoPago() {
+	public void setSituacaoPago() {
 		clicar("status_pago");
 	}
 	
-	public String obterMensagemSucesso() {
+	public String getMensagemSucesso() {
 		return obterTexto(By.xpath("//div[@class= 'alert alert-success']"));
 	}
 	
 	public void salvar() {
-		clicar(By.xpath("//button[.='Salvar']"));
+		clicarBotaoPorTexto("Salvar");
 	}
 }

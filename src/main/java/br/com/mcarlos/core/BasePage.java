@@ -38,6 +38,10 @@ public class BasePage {
 		getDriver().findElement(by).click();
 	}
 	
+	public void clicarBotaoPorTexto(String texto) {
+		clicar(By.xpath("//button[.='"+texto+"']"));
+	}
+	
 	public boolean isMarcado(String id) {
 		return getDriver().findElement(By.id(id)).isSelected();
 	}

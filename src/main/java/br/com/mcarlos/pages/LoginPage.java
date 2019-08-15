@@ -1,7 +1,5 @@
 package br.com.mcarlos.pages;
 
-import org.openqa.selenium.By;
-
 import br.com.mcarlos.core.BasePage;
 import br.com.mcarlos.core.DriverFactory;
 
@@ -20,6 +18,6 @@ public class LoginPage extends BasePage {
 	}
 	
 	public void entrar() {
-		clicar(By.xpath("//button[.='Entrar']"));
+		clicarBotaoPorTexto("Entrar");
 	}
 }

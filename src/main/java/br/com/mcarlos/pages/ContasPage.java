@@ -11,14 +11,14 @@ public class ContasPage extends BasePage {
 	}
 	
 	public void salvar() {
-		clicar(By.xpath("//button[.='Salvar']"));
+		clicarBotaoPorTexto("Salvar");
 	}
 	
-	public String obterMensagemSucesso() {
+	public String getMensagemSucesso() {
 		return obterTexto(By.xpath("//div[@class= 'alert alert-success']"));
 	}
 	
-	public String obterMensagemErro() {
+	public String getMensagemErro() {
 		return obterTexto(By.xpath("//div[@class= 'alert alert-danger']"));
 	}
 
