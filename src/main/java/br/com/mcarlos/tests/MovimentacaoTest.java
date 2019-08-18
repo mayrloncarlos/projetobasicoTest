@@ -1,6 +1,10 @@
 package br.com.mcarlos.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -28,5 +32,21 @@ public class MovimentacaoTest extends BaseTest {
 		movimentacaoPage.salvar();
 		
 		assertEquals("Movimentação adicionada com sucesso!", movimentacaoPage.getMensagemSucesso());
+	}
+	
+	@Test
+	public void testeCamposObrigatorios() {
+		menuPage.acessarTelaMovimentacao();
+		
+		movimentacaoPage.salvar();
+		List<String> obterErros = movimentacaoPage.obterErros();
+		
+		assertTrue(obterErros.containsAll(Arrays.asList("Data da Movimentação é obrigatório",
+											"Data do pagamento é obrigatório",
+											"Descrição é obrigatório",
+											"Interessado é obrigatório",
+											"Valor é obrigatório",
+											"Valor deve ser um número")));
+		assertEquals(6, obterErros.size());
 	}
 }
