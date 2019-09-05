@@ -1,9 +1,12 @@
 package br.com.mcarlos.tests;
 
+import static br.com.mcarlos.utils.DataUtils.obterDataComDiferencaDias;
+import static br.com.mcarlos.utils.DataUtils.obterDataFormatada;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -22,8 +25,8 @@ public class MovimentacaoTest extends BaseTest {
 		menuPage.acessarTelaMovimentacao();
 		
 		movimentacaoPage.setTipoMovimentacao("Despesa");
-		movimentacaoPage.setDataMovimentacao("10/08/2019");
-		movimentacaoPage.setDataPagamento("15/08/2019");
+		movimentacaoPage.setDataMovimentacao(obterDataFormatada(new Date()));
+		movimentacaoPage.setDataPagamento(obterDataFormatada(new Date()));
 		movimentacaoPage.setDescricao("Teste de descrição");
 		movimentacaoPage.setInteressado("Mayrlon");
 		movimentacaoPage.setValor("150.00");
@@ -48,5 +51,27 @@ public class MovimentacaoTest extends BaseTest {
 											"Valor é obrigatório",
 											"Valor deve ser um número")));
 		assertEquals(6, obterErros.size());
+	}
+	
+	@Test
+	public void inserirMovimentacaoFutura() {
+		menuPage.acessarTelaMovimentacao();
+		
+		Date dataFutura = obterDataComDiferencaDias(5);
+		
+		movimentacaoPage.setTipoMovimentacao("Despesa");
+		movimentacaoPage.setDataMovimentacao(obterDataFormatada(dataFutura));
+		movimentacaoPage.setDataPagamento(obterDataFormatada(dataFutura));
+		movimentacaoPage.setDescricao("Teste de descrição");
+		movimentacaoPage.setInteressado("Mayrlon");
+		movimentacaoPage.setValor("150.00");
+		movimentacaoPage.setConta("Conta Teste Alterada");
+		movimentacaoPage.setSituacaoPago();
+		movimentacaoPage.salvar();
+		
+		List<String> obterErros = movimentacaoPage.obterErros();
+		assertTrue(
+				obterErros.contains("Data da Movimentação deve ser menor ou igual à data atual"));
+		assertEquals(1, obterErros.size());
 	}
 }
