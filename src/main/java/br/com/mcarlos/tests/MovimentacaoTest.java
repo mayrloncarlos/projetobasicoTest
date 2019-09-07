@@ -1,6 +1,5 @@
 package br.com.mcarlos.tests;
 
-import static br.com.mcarlos.core.Propriedades.NOME_CONTA_ALTERADA;
 import static br.com.mcarlos.utils.DataUtils.obterDataComDiferencaDias;
 import static br.com.mcarlos.utils.DataUtils.obterDataFormatada;
 import static org.junit.Assert.assertEquals;
@@ -10,15 +9,12 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
 import br.com.mcarlos.core.BaseTest;
 import br.com.mcarlos.pages.MenuPage;
 import br.com.mcarlos.pages.MovimentacaoPage;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MovimentacaoTest extends BaseTest {
 	
 	private MovimentacaoPage movimentacaoPage = new MovimentacaoPage();
@@ -34,7 +30,7 @@ public class MovimentacaoTest extends BaseTest {
 		movimentacaoPage.setDescricao("Teste de descrição");
 		movimentacaoPage.setInteressado("Mayrlon");
 		movimentacaoPage.setValor("150.00");
-		movimentacaoPage.setConta(NOME_CONTA_ALTERADA);
+		movimentacaoPage.setConta("Conta para movimentacoes");
 		movimentacaoPage.setSituacaoPago();
 		movimentacaoPage.salvar();
 		
@@ -69,7 +65,7 @@ public class MovimentacaoTest extends BaseTest {
 		movimentacaoPage.setDescricao("Teste de descrição");
 		movimentacaoPage.setInteressado("Mayrlon");
 		movimentacaoPage.setValor("150.00");
-		movimentacaoPage.setConta(NOME_CONTA_ALTERADA);
+		movimentacaoPage.setConta("Conta para movimentacoes");
 		movimentacaoPage.setSituacaoPago();
 		movimentacaoPage.salvar();
 		

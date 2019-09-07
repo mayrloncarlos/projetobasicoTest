@@ -13,19 +13,19 @@ import br.com.mcarlos.pages.LoginPage;
 
 public class BaseTest {
 	
-//	private LoginPage page = new LoginPage();
+	private LoginPage page = new LoginPage();
 	
 	@Rule
 	public TestName testName = new TestName();
 	
-//	@Before
-//	public void inicializa() {
-//		page.acessarTelaInicial();
-//		
-//		page.setEmail("mayrloncarlos2@gmail.com");
-//		page.setSenha("123456");
-//		page.entrar();
-//	}
+	@Before
+	public void inicializa() {
+		page.acessarTelaInicial();
+		
+		page.setEmail("mayrloncarlos2@gmail.com");
+		page.setSenha("123456");
+		page.entrar();
+	}
 	
 
 	@After

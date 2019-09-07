@@ -1,6 +1,5 @@
 package br.com.mcarlos.tests;
 
-import static br.com.mcarlos.core.Propriedades.NOME_CONTA_ALTERADA;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -18,7 +17,7 @@ public class RemoverMovimentacaoContaTest extends BaseTest {
 	public void testeExcluirContaComMovimentacao() {
 		 menuPage.acessarTelaListarConta();
 		 
-		 contasPage.clicarExcluirConta(NOME_CONTA_ALTERADA);
+		 contasPage.clicarExcluirConta("Conta com movimentacao");
 		 
 		 assertEquals("Conta em uso na movimentações", contasPage.getMensagemErro());
 	}

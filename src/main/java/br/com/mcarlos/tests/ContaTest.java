@@ -1,17 +1,13 @@
 package br.com.mcarlos.tests;
 
-import static br.com.mcarlos.core.Propriedades.NOME_CONTA_ALTERADA;
 import static org.junit.Assert.assertEquals;
 
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
 import br.com.mcarlos.core.BaseTest;
 import br.com.mcarlos.pages.ContasPage;
 import br.com.mcarlos.pages.MenuPage;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ContaTest extends BaseTest {
 	
 	private MenuPage menuPage = new MenuPage();
@@ -32,8 +28,8 @@ public class ContaTest extends BaseTest {
 		menuPage.acessarTelaListarConta();
 		
 		
-		contasPage.clicarAlterarConta("Conta Teste");
-		contasPage.setNome(NOME_CONTA_ALTERADA);
+		contasPage.clicarAlterarConta("Conta para alterar");
+		contasPage.setNome("Conta alterada");
 		contasPage.salvar();
 		
 		assertEquals("Conta alterada com sucesso!", contasPage.getMensagemSucesso());
@@ -42,7 +38,7 @@ public class ContaTest extends BaseTest {
 	@Test
 	public void teste3InserirContasIguais() {
 		menuPage.acessarTelaInserirConta();
-		contasPage.setNome(NOME_CONTA_ALTERADA);
+		contasPage.setNome("Conta mesmo nome");
 		contasPage.salvar();
 		
 		
